@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<div class="profile-page--banner">
+</div>
+<div class="profile-page__user ">
+  <img class="profile-page__user--avatar " src= "<%= findUser.avatarUrl %>"/>
+  <h2><%= findUser.name %></h2>
+</div>
+  <div class="profile-page__friends">
+  <h3><%= findUser.name %></h3>
+  <ul class="profile-page__friends--list">
+    <% listOfFriends.forEach(friend => { %>
+        <li class="friend">
+            <a style="text-decoration:none" href="./<%= friend._id %>"><img src= "<%= friend.avatarUrl %>"/></a>
+        <p><%= friend.name %> </p>
+        </li>
+    <% });%>
+  </ul>
+</div>
+<%- include('../partials/footer') %>
