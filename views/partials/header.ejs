@@ -8,5 +8,9 @@
 <body>
   <header class="header">
     <a style="text-decoration:none" href="../"><h1 class='site-title'>Facespace</h1></a>
-    <a style="text-decoration:none" href="/signin"><h1 class='site-title'>Login</h1></a>
+    <% if(currentUser.name === undefined ) { %> 
+      <a style="text-decoration:none" href="/signin"><h1 class='site-title'>Login</h1></a>
+      <% }else { %>
+      <a style="text-decoration:none"><h1 class='site-title'>Howdy,<%= currentUser.name %></h1></a>
+    <% } %>
   </header>

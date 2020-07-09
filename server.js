@@ -7,7 +7,7 @@ const { users } = require("./data/users");
 
 let currentUser = {};
 const handleHomepage = (req, res) => {
-  res.status(200).render("pages/homepage", { users: users });
+  res.status(200).render("pages/homepage", { users: users, currentUser });
 };
 const handleProfilePage = (req, res, next) => {
   const UserId = req.params.id;
@@ -23,10 +23,10 @@ const handleProfilePage = (req, res, next) => {
     });
     return foundUser;
   });
-  res.render("pages/profile", { findUser, listOfFriends });
+  res.render("pages/profile", { findUser, listOfFriends, currentUser });
 };
 const handleSignIn = (req, res) => {
-  res.render("pages/signin");
+  res.render("pages/signin", { currentUser });
 };
 const handleName = (req, res) => {
   const firstName = req.body.firstName;
@@ -42,6 +42,7 @@ const handleName = (req, res) => {
     res.redirect("./signin");
   } else {
     res.redirect("/users/" + findObject._id);
+    currentUser = findObject;
   }
 };
 // declare the 404 function
